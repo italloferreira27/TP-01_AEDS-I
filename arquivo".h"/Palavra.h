@@ -1,24 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #ifndef PALAVRA.H
 #define PALAVRA.H
 
-// Tad linaha //
-typedef struct {
-    int linha;
-}linha;
-
-typedef struct celula_linha{
-    linha *linha;
-    struct celula_linha *proxL;
-}celula_linha;
-
-// Tad palavra //
+//palavra
 typedef struct {
     char palavra[20];
-    celula_linha *llinha;
-}palavra;
+    //lista_linha Linhas;
+}Tpalavra;
 
-void inicializarP(palavra *palavra){
-    
-}
+//celula de palavra *****
+typedef struct celulaP{
+    Tpalavra Pala;
+    struct celulaP *prox;
+}celulaP;
+
+
 
 #endif
