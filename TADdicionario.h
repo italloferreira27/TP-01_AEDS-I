@@ -7,9 +7,9 @@ typedef struct dicionario{
     struct palavra *proximo;
 }dicionario;
 
-typedef struct(
+typedef struct{
     palavra *inicio;
     int tam;
-)Lista;
+}Lista;
 
-void inicializar()
+//void inicializar();
