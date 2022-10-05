@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //criando a estruta dicionario
 typedef struct dicionario{

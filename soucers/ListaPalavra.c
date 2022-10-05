@@ -1,4 +1,4 @@
-#include "ListaPalavra.h"
+#include "../headers/ListaPalavra.h"
 
 //funcao inicializa lista de palavras ******
 void inicializa_listaP(lista_palavra *listP){

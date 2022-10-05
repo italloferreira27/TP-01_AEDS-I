@@ -1,4 +1,5 @@
-#include "Palavra.h"
+#include "../headers/Palavra.h"
+#include "../headers/TADdicionario.h"
 
 #ifndef LISTAPALAVRA.H
 #define LISTAPALAVRA.H

@@ -1,7 +1,4 @@
-#include "ListaPalavra.h"
-#include "TADdicionario.h"
-#include "Palavra.h"
-#include <stdio.h>
+#include "./headers/ListaPalavra.h"
 
 int main(){
     int op=9,linha;
@@ -10,6 +7,7 @@ int main(){
 
     inicializa_listaP(&L);
 
+    printf("1 = Adicionar\n2 = imprimir\n3 = retirar\n4 = Remover\n\n");
     while(op!=0){
         scanf("%d",&op);
         printf("*********\n");
