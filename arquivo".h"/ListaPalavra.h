@@ -23,4 +23,13 @@ void adicionarP(lista_palavra *list,Tpalavra p);
 //imprime
 void imprime(lista_palavra *list);
 
+//remove palavra(dada a palavra)
+void removeP(lista_palavra *list,Tpalavra p);
+
+//remove palavra (final)*****
+void retiraP_final(lista_palavra *list);
+
+//retorna tamanho da lista
+int gettamanhoListaP(lista_palavra *list);
+
 #endif
