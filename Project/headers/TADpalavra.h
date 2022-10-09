@@ -5,7 +5,7 @@ typedef char TIPOpalavra;
 
 //definicao do TAD palavra
 typedef struct{
-    TIPOpalavra item[10];
+    TIPOpalavra item[50];
 }TPalavra;
 
 //definindo apontado para celula
@@ -27,7 +27,7 @@ typedef struct{
 //Prototipos
 int ListaVaziaLP(ListaPala *LP);
 void InicializarLP(ListaPala *LP);
-void InserirElemLP(ListaPala *LP, TPalavra item); //funcao 1
+void InserirElemLP(ListaPala *LP, TPalavra item, char *); //funcao 1
 void ExcluirElemLPfinal(ListaPala *LP); //funcao 4 
 void ExcluirElemLPEspecifico(ListaPala *LP, char *pl); //funcao 3 
 int ProcurarLP(ListaPala *LP, char *pl); //funcao 2

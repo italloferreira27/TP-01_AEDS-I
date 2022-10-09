@@ -14,14 +14,20 @@ void InicializarLP(ListaPala *LP){
 }
 
 //inserir nova Lista de Palavra //funcao 1
-void InserirElemLP(ListaPala *LP, TPalavra item){
-    LP->Ulitmo->prox = (Apontador) malloc(sizeof(celulapalavra));
-    LP->Ulitmo = LP->Ulitmo->prox;
-    if(LP->Ulitmo != NULL){ //espaco esta disponivel
-        LP->Ulitmo->palavra = item; 
-        LP->Ulitmo->prox = NULL;
+void InserirElemLP(ListaPala *LP, TPalavra item, char *charptr){
+    //result para verificar se a palavra ja exite
+    int result;
+    result = ProcurarLP(LP, charptr);
+
+    if(result == 0){
+        LP->Ulitmo->prox = (Apontador) malloc(sizeof(celulapalavra));
+        LP->Ulitmo = LP->Ulitmo->prox;
+        if(LP->Ulitmo != NULL){ //espaco esta disponivel
+            LP->Ulitmo->palavra = item; 
+            LP->Ulitmo->prox = NULL;
+        }
+        LP->nroElem++;
     }
-    LP->nroElem++;
 }
 
 //imprimi Lista de Palavra
@@ -50,7 +56,8 @@ void ImprimirLPespecifica(ListaPala *LP, char *pl){
     //verificar se elemento existe
     r = ProcurarLP(LP,pl);
 
-    if(r ==1){
+    if(r == 1){
+        printf("Palavra existe.\n");
         while (aux != NULL){
         result = strcmp(aux->palavra.item, pl);
         if(result == 0){
@@ -58,6 +65,9 @@ void ImprimirLPespecifica(ListaPala *LP, char *pl){
         }
         aux = aux->prox;
         }
+    }
+    else{
+        printf("Palavra nao existe.\n");
     }
     return;
 }
@@ -70,12 +80,12 @@ int ProcurarLP(ListaPala *LP, char *pl){ //funcao 2
     while (aux != NULL){
         result = strcmp(aux->palavra.item, pl);
         if(result == 0){
-            printf("Palavra existe.\n");
+            //printf("Palavra existe.\n");
             return 1;
         }
         aux = aux->prox;
     }
-    printf("Palavra nao existe.\n");
+    //printf("Palavra nao existe.\n");
     return 0;
 }
 
@@ -104,7 +114,7 @@ void ExcluirElemLPEspecifico(ListaPala *LP, char *pl){ //funcao 3
         result = strcmp(aux->palavra.item, pl);
         if(result == 0){
             Cauxptr = aux;
-            ANTptr = aux->prox;
+            ANTptr->prox = aux->prox;
             free(Cauxptr);
             printf("Palavra removida.\n");
             return;
@@ -133,6 +143,7 @@ void ExcluirElemLPfinal(ListaPala *LP){ //funcao 4
         if(aux->prox == NULL){
             Cauxptr = LP->Ulitmo;
             LP->Ulitmo = ANTptr;
+            LP->Ulitmo->prox = NULL;
             free(Cauxptr);
             printf("Ultima palavra removida.\n");
             return;

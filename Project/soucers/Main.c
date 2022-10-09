@@ -1,38 +1,17 @@
-#include "./headers/TADpalavra.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "../headers/TADpalavra.h"
 
 int main(){
-    /*
-    char linha[100]; //Recebe as frases do texto
-    char *palavra; //Lê cada palavra da linha
-    int cont = 1; //conta o numero da linha em que a palavra esta
-
-    FILE *file;
-    file = fopen("texto.txt", "r");
-
-    if(file == NULL){ //Verificando se encontrou algum arquivo
-        printf("Nao foi possivel encontrar o arquivo.");
-        return 0;
-    }
-
-    while(fgets(linha, 100, file) != NULL){
-        palavra = strtok(linha, " "); //Esta separando cada palavra da linha
-
-        while(palavra){
-            printf("%s\n", palavra);
-            palavra = strtok(NULL, " "); //Passa para a proxima palavra
-        }
-        printf("LINHA: %d\n", cont);
-        cont++;
-    }
-    
-    fclose(file);
-    */
-    
     ListaPala lista;
     TPalavra obj;
 
     int escolha, result;
-    char palavra[10];
+    char palavra[50];
+
+    FILE *TXTptr;
+    TXTptr = fopen("texto.txt", "r");
 
     InstrucoesLP(); //exibe menu de escolhas
     scanf("%d",&escolha);
@@ -42,15 +21,31 @@ int main(){
     while(escolha != 8){
         switch(escolha){
             case 1:
-                printf("Digite uma palavra: ");
-                scanf("%s",palavra);
-                strcpy(obj.item, palavra);
-                InserirElemLP(&lista, obj);//funcao 1
+                printf("Lendo arquivo de texto.\n");
+                if(TXTptr == NULL){
+                    printf("Arquivo nao pode ser aberto.\n");
+                    exit (0);
+                }
+                else{
+                    while (!feof(TXTptr)){
+                        fscanf(TXTptr, "%s", palavra);
+                        strcpy(obj.item, palavra);
+                        InserirElemLP(&lista, obj, palavra);//funcao 1
+                    }
+                }
+                fclose(TXTptr);
+                printf("Leitura realizada com sucesso.\n");
                 break;
             case 2:
                 printf("Digite uma palavra que queira verificar: ");
                 scanf("%s",palavra);
-                ProcurarLP(&lista, palavra);//funcao 2
+                result = ProcurarLP(&lista, palavra);//funcao 2
+                if(result == 1){
+                    printf("Palavra existe.\n");
+                }
+                else{
+                    printf("Palavra nao existe.\n");
+                }
                 break;
             case 3:
                 printf("Digite a palavra que queria excluir: ");
