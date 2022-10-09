@@ -14,14 +14,22 @@ void IniciarDici(TlistaL *dici){
 void InserirPala(TlistaL *dici, ListaPala *lp, TPalavra item){
     ApontaL aux;
     int result;
+    char l,pala[50];
+
+    strcpy(pala, item.item);
+    l = item.item[0];
+
+
     aux = dici->PrimeiroL->proxL;
     while (aux != NULL){
-           //result = (strcmp(aux->Let.L, letra));    
+        if(aux->Let.L == l){
+            result = 0;
+        }    
     }
     if(result != 0){
         dici->UltimoL->proxL = (ApontaL) malloc(sizeof(celulaL));
         dici->pala = lp->Primeiro;
-        //InserirElemLP(lp, item, charptr);
+        InserirElemLP(lp, item, pala);
     }      
 
 }

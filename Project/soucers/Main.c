@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../headers/TADpalavra.h"
-#include "../headers/TADdicionario.h"
+#include "TADpalavra.h"
 
 int main(){
     ListaPala lista;
     TPalavra obj;
-    TlistaL Letras;
 
     int escolha, result;
-    char palavra[50],l;
+    char palavra[50];
 
     FILE *TXTptr;
     TXTptr = fopen("texto.txt", "r");
@@ -19,7 +17,6 @@ int main(){
     scanf("%d",&escolha);
 
     InicializarLP(&lista);
-    IniciarDici(&Letras);
 
     while(escolha != 8){
         switch(escolha){
@@ -33,9 +30,7 @@ int main(){
                     while (!feof(TXTptr)){
                         fscanf(TXTptr, "%s", palavra);
                         strcpy(obj.item, palavra);
-                        //InserirElemLP(&lista, obj, palavra);//funcao 1
-                        l = palavra[0];
-                        IniciarDici(&Letras, obj);
+                        InserirElemLP(&lista, obj, palavra);//funcao 1
                     }
                 }
                 fclose(TXTptr);
@@ -44,13 +39,7 @@ int main(){
             case 2:
                 printf("Digite uma palavra que queira verificar: ");
                 scanf("%s",palavra);
-                result = ProcurarLP(&lista, palavra);//funcao 2
-                if(result == 1){
-                    printf("Palavra existe.\n");
-                }
-                else{
-                    printf("Palavra nao existe.\n");
-                }
+                ProcurarLP(&lista, palavra);//funcao 2
                 break;
             case 3:
                 printf("Digite a palavra que queria excluir: ");
