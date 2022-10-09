@@ -41,7 +41,10 @@ void ImprimirLP(ListaPala *LP){
     }
 
     while (aux != NULL){
-        printf("%s\n",aux->palavra.item);
+        printf("-----------------------\n");
+        printf("palavra: %s\n",aux->palavra.item);
+        printf("Linhas: \n");
+        printf("-----------------------\n");
         aux = aux->prox;
     }
     return;
