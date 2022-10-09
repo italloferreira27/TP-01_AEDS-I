@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "../headers/TADlinha.h"
 
 //definindo tipo char
 typedef char TIPOpalavra;
@@ -16,7 +15,7 @@ typedef struct celulapalavra *Apontador;
 typedef struct celulapalavra{
     TPalavra palavra;
     struct celulapalavra *prox;
-}celulapalavra; //Celula da palavra
+}celula_palavra; //Celula da palavra
 
 //definindo Lista de palavra
 typedef struct{

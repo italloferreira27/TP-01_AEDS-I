@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "TADpalavra.h"
+#include "../headers/TADpalavra.h"
 
 //verificar se a lista esta vazia
 int ListaVaziaLP(ListaPala *LP){
@@ -10,7 +7,7 @@ int ListaVaziaLP(ListaPala *LP){
 
 //inicializar o Lista Palavra
 void InicializarLP(ListaPala *LP){
-    LP->Primeiro = (Apontador) malloc(sizeof(celulapalavra));
+    LP->Primeiro = (Apontador) malloc(sizeof(celula_palavra));
     LP->Ulitmo = LP->Primeiro;
     LP->Primeiro->prox = NULL;
     LP->nroElem = 0;
@@ -18,7 +15,7 @@ void InicializarLP(ListaPala *LP){
 
 //inserir nova Lista de Palavra //funcao 1
 void InserirElemLP(ListaPala *LP, TPalavra item){
-    LP->Ulitmo->prox = (Apontador) malloc(sizeof(celulapalavra));
+    LP->Ulitmo->prox = (Apontador) malloc(sizeof(celula_palavra));
     LP->Ulitmo = LP->Ulitmo->prox;
     if(LP->Ulitmo != NULL){ //espaco esta disponivel
         LP->Ulitmo->palavra = item; 
@@ -53,7 +50,7 @@ void ImprimirLPespecifica(ListaPala *LP, char *pl){
     //verificar se elemento existe
     r = ProcurarLP(LP,pl);
 
-    if(r ==1){
+    if(r == 1){
         while (aux != NULL){
         result = strcmp(aux->palavra.item, pl);
         if(result == 0){
