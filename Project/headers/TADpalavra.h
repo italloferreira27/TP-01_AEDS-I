@@ -8,7 +8,7 @@ typedef struct{
     TIPOpalavra item[50];
 }TPalavra;
 
-//definindo apontado para celula
+//definindo apontador para celula
 typedef struct celulapalavra *Apontador;
 
 //definindo a celula do TAD palavra

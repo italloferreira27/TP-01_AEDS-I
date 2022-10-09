@@ -2,13 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../headers/TADpalavra.h"
+#include "../headers/TADdicionario.h"
 
 int main(){
     ListaPala lista;
     TPalavra obj;
+    TlistaL Letras;
 
     int escolha, result;
-    char palavra[50];
+    char palavra[50],l;
 
     FILE *TXTptr;
     TXTptr = fopen("texto.txt", "r");
@@ -17,6 +19,7 @@ int main(){
     scanf("%d",&escolha);
 
     InicializarLP(&lista);
+    IniciarDici(&Letras);
 
     while(escolha != 8){
         switch(escolha){
@@ -30,7 +33,9 @@ int main(){
                     while (!feof(TXTptr)){
                         fscanf(TXTptr, "%s", palavra);
                         strcpy(obj.item, palavra);
-                        InserirElemLP(&lista, obj, palavra);//funcao 1
+                        //InserirElemLP(&lista, obj, palavra);//funcao 1
+                        l = palavra[0];
+                        IniciarDici(&Letras, obj);
                     }
                 }
                 fclose(TXTptr);
