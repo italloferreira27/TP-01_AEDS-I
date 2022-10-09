@@ -2,5 +2,5 @@
  Trabalho Prático de AEDS I
 
 
-**gcc -o exerc MainTeste.c ./soucers/TADpalavra.c** *COMPILAR*
-**./exerc** *RODAR O EXECUTÁVEL*
+*gcc -o exerc MainTeste.c ./soucers/TADpalavra.c ./soucers/TADlinha.c*   COMPILAR
+*./exerc*    RODAR O EXECUTÁVEL

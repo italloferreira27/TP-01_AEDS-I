@@ -15,7 +15,7 @@ typedef struct celulapalavra *Apontador;
 typedef struct celulapalavra{
     TPalavra palavra;
     struct celulapalavra *prox;
-}celula_palavra; //Celula da palavra
+}celulapalavra; //Celula da palavra
 
 //definindo Lista de palavra
 typedef struct{

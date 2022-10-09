@@ -6,20 +6,20 @@ int LL_vazia(Lista_Linha *linha){
 }
 
 void LL_Inicializa(Lista_Linha *linha){
-    linha->Primeiro = (Apontador) malloc(sizeof(celula_linha));
+    linha->Primeiro = (Apontado) malloc(sizeof(celula_linha));
     linha->Ultimo = linha->Primeiro;
     linha->Primeiro->prox = NULL;
 }
 
 void LL_Inserir(Lista_Linha *linha, Tlinha* num){
-    linha->Ultimo->prox = (Apontador) malloc(sizeof(celula_linha));
+    linha->Ultimo->prox = (Apontado) malloc(sizeof(celula_linha));
     linha->Ultimo = linha->Ultimo->prox;
     linha->Ultimo->NumLinha = *num;
     linha->Ultimo->prox = NULL;
 }
 
 void LL_Imprimir(Lista_Linha* linha){
-    Apontador aux;
+    Apontado aux;
     aux = linha->Primeiro->prox;
     
     printf("Linhas: ");
