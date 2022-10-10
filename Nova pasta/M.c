@@ -35,7 +35,7 @@ int main(){
                         strcpy(obj.item, palavra);
                         //InserirElemLP(&lista, obj, palavra);//funcao 1
                         //l = palavra[0];
-                        inserirPinD(&let, &lista, &obj);
+                        inserirPinD(&let, &lista, obj);
                     }
                 }
                 fclose(TXTptr);

@@ -10,14 +10,14 @@ void iniciarD(TLD *D){
     D->priL->proxD == NULL;
 }
 
-void inserirPinD(TLD *D, ListaPala *pl, TPalavra *obj){
+void inserirPinD(TLD *D, ListaPala *pl, TPalavra obj){
     ApontL aux;
     int cont=0;
     aux = D->priL->proxD;
     char l,palavra;
 
     l = obj->item[0];
-    strcpy(palavra, obj->item);
+    strcpy(palavra, obj.item);
 
     while(aux != NULL){
         if(aux->Pala.l == l){

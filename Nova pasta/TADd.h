@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <TADp.h>
+#include "TADp.h"
+#include "TADp.h"
 
 //definindo tipo TAD dicionario
 //typedef struct Letra;
@@ -11,7 +12,7 @@ typedef struct{
 }Tdici;
 
 //definindo tipo celula
-typedef struct CelDici *(ApontL);
+typedef struct CelDici *ApontL;
 
 //definindo celula
 typedef struct CelDici{
@@ -26,6 +27,6 @@ typedef struct{
 }TLD;
 
 void iniciarD(TLD *D);
-void inserirPinD(TLD *D, ListaPala *pl, TPalavra *obj);
+void inserirPinD(TLD *D, ListaPala *pl, TPalavra obj);
 void imprimirLespci(TLD *D);
 void imprimirDici(TLD *D);

@@ -9,7 +9,7 @@ typedef char TIPOpalavra;
 //definicao do TAD palavra
 typedef struct{
     TIPOpalavra item[50];
-    Apontado linhaP; //Aponta para a linha da palavra
+    //Apontador linhaP; //Aponta para a linha da palavra
 }TPalavra;
 
 //definindo apontador para celula
@@ -25,7 +25,7 @@ typedef struct celulapalavra{
 typedef struct{
     Apontador Primeiro;
     Apontador Ulitmo;
-    Apontado linhaL;
+    //Apontado linhaL;
     int nroElem; //numero de elementos
 }ListaPala; //Lista palavra
 
