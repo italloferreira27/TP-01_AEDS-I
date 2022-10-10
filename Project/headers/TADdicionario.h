@@ -1,32 +1,33 @@
-#include "TADpalavra.h"
+#ifndef TADDICIONARIO_H
+#define TADDICIONARIO_H
 
-//definfindo TAD dicionario
-typedef char Letra;
+//letra
+typedef struct {
+    char letra[2];
+}letra;
 
-//declarando TAD dicionario
+//celula letra
+typedef struct celula_letra{
+    letra Letra;
+    struct celula_letra *prox;
+}celula_letra;
+
+//lista de letras
 typedef struct{
-    Letra L;
-    Apontador palavraD; //Aponta para a palavra do TADpalavra
-}Tdicionario;
+    celula_letra *primeiro;
+    celula_letra *utimo;
+}lista_letra;
 
-//declarando apontador para letra
-typedef struct celulaL *ApontaL;
+//inicializa lista de letras
+void inicia_lista_lista_letra(lista_letra *lista);
 
-//declarando celula do TADdicionario
-typedef struct celulaL{
-    Tdicionario Let;//cada letra
-    struct celulaL *proxL;
-}celulaL;
+//insere letra na lista
+void insere_letra(lista_letra *lista, letra l);
 
-//declarando Lista de letras
-typedef struct{
-    ApontaL PrimeiroL;
-    ApontaL UltimoL;
-    ApontaL pala; //cada celular apontara para sua letra em especifico
-}TlistaL;
+//verifica se a letra ja exista(chamar para inserir palavra)
+int verifica_letra(lista_letra *lista, letra l);
 
-//prototipos
-void IniciarDici(TlistaL *dici);
-void InserirPala(TlistaL *dici, ListaPala *lp, TPalavra item);
-void ImprimeLEspeci(TlistaL *dici, char);
-void ImprimeDici(TlistaL *dici);
+// imprime lista
+void imprimeletra(lista_letra *lista);
+
+#endif
