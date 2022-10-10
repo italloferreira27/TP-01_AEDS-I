@@ -1,9 +1,9 @@
-#ifndef TADDICIONARIO_H
-#define TADDICIONARIO_H
+#include "TADpalavra.h"
 
 //letra
 typedef struct {
     char letra[2];
+    ListaPala *palavras;
 }letra;
 
 //celula letra
@@ -30,4 +30,5 @@ int verifica_letra(lista_letra *lista, letra l);
 // imprime lista
 void imprimeletra(lista_letra *lista);
 
-#endif
+//imprime letra dada
+void imprimeletradada(lista_letra *lista);

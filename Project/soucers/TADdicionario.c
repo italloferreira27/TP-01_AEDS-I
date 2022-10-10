@@ -67,3 +67,20 @@ void imprimeletra(lista_letra *lista){
     }
 
 }
+
+//imprime letra dada
+void imprimeletradada(lista_letra *lista){
+    celula_letra *aux = lista->primeiro->prox;
+    char dada;
+
+    scanf("%c",&dada);
+    
+    while (aux->prox != NULL){
+        if(dada == aux->Letra.letra){
+            printf("!");
+            break;
+        }
+    }
+
+    printf("%c/n",aux->Letra.letra);
+}
