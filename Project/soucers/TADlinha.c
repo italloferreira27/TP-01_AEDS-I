@@ -28,7 +28,40 @@ void LL_Imprimir(Lista_Linha* linha){
         aux = aux->prox;
     }
 }
-/*
-void LL_Remove(Lista_Linha* linha, Tlinha* num){
-    
-}*/
+
+void LL_ExcluirFinal(Lista_Linha* linha){
+    if(LL_vazia){
+        return 0;
+    }
+    celula_linha *paux = linha->Primeiro->prox;
+    celula_linha *pant = linha->Primeiro;
+
+    while(paux->prox != NULL){
+        paux = paux->prox;
+        pant = pant->prox;
+    }
+
+    if(paux != NULL){
+        pant->prox = paux->prox;
+        free(paux);
+    }
+
+}
+
+void LL_ExcluirEspecifico(Lista_Linha* linha, Tlinha* num){
+    Apontado paux = linha->Primeiro->prox;
+    Apontado pant = linha->Primeiro;    
+
+    if(LL_vazia){
+        return 0;
+    }
+
+    while(paux != num){
+        paux = paux->prox;
+        pant = pant->prox;
+    }
+    if(paux != NULL){
+        pant->prox = paux->prox;
+        free(paux);
+    }
+}

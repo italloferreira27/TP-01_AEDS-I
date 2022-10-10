@@ -21,4 +21,5 @@ int LL_vazia(Lista_Linha *linha);
 void LL_Inicializa(Lista_Linha* linha);
 void LL_Inserir(Lista_Linha* linha, Tlinha* num);
 void LL_Imprimir(Lista_Linha* linha);
-//void LL_Remove(Lista_Linha* linha, Tlinha* num);
+void LL_ExcluirFinal(Lista_Linha* linha);
+void LL_ExcluirEspecifico(Lista_Linha* linha, Tlinha* num);
