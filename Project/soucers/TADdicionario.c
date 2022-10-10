@@ -25,6 +25,7 @@ void InserirPala(TlistaL *dici, ListaPala *lp, TPalavra item){
         if(aux->Let.L == l){
             result = 0;
         }    
+        //result = (strcmp(aux->Let.L, letra));    
     }
     if(result != 0){
         dici->UltimoL->proxL = (ApontaL) malloc(sizeof(celulaL));

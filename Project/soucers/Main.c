@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "TADpalavra.h"
+#include "../headers/TADpalavra.h"
+//#include "../headers/TADdicionario.h"
 
 int main(){
     ListaPala lista;
     TPalavra obj;
+    //TlistaL Letras;
 
     int escolha, result;
     char palavra[50];
@@ -17,6 +19,7 @@ int main(){
     scanf("%d",&escolha);
 
     InicializarLP(&lista);
+    //IniciarDici(&Letras);
 
     while(escolha != 8){
         switch(escolha){
@@ -31,6 +34,8 @@ int main(){
                         fscanf(TXTptr, "%s", palavra);
                         strcpy(obj.item, palavra);
                         InserirElemLP(&lista, obj, palavra);//funcao 1
+                        //l = palavra[0];
+                        //IniciarDici(&Letras, obj);
                     }
                 }
                 fclose(TXTptr);
@@ -72,3 +77,29 @@ int main(){
     }
     return 0;
 }
+/*
+ char linha[100]; //Recebe as frases do texto
+    char *palavra; //Lê cada palavra da linha
+    int cont = 1; //conta o numero da linha em que a palavra esta
+
+    FILE *file;
+    file = fopen("texto.txt", "r");
+
+    if(file == NULL){ //Verificando se encontrou algum arquivo
+        printf("Nao foi possivel encontrar o arquivo.");
+        return 0;
+    }
+
+    while(fgets(linha, 100, file) != NULL){
+        palavra = strtok(linha, " "); //Esta separando cada palavra da linha
+
+        while(palavra){
+            printf("%s\n", palavra);
+            palavra = strtok(NULL, " "); //Passa para a proxima palavra
+        }
+        printf("LINHA: %d\n", cont);
+        cont++;
+    }
+    
+    fclose(file); '\0'
+    */

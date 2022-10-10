@@ -6,6 +6,7 @@ typedef char Letra;
 //declarando TAD dicionario
 typedef struct{
     Letra L;
+    Apontador palavraD; //Aponta para a palavra do TADpalavra
 }Tdicionario;
 
 //declarando apontador para letra

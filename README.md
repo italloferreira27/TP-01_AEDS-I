@@ -3,4 +3,4 @@
 
 
 *gcc -o exerc MainTeste.c ./soucers/TADpalavra.c ./soucers/TADlinha.c*   COMPILAR
-*./exerc*    RODAR O EXECUTÁVEL
+*./exec*    RODAR O EXECUTÁVEL

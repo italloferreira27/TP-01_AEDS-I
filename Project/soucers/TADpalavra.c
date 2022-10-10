@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "TADpalavra.h"
+#include "../headers/TADpalavra.h"
 
 //verificar se a lista esta vazia
 int ListaVaziaLP(ListaPala *LP){

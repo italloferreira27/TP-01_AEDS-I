@@ -28,3 +28,7 @@ void LL_Imprimir(Lista_Linha* linha){
         aux = aux->prox;
     }
 }
+/*
+void LL_Remove(Lista_Linha* linha, Tlinha* num){
+    
+}*/
