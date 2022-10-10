@@ -29,3 +29,5 @@ int main(){
     fclose(file);
     return 0;
 }
+//verificar se a linha ja foi inserida
+//verificar se a palavra ja existe
