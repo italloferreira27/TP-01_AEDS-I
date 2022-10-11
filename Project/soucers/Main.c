@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../headers/TADpalavra.h"
-//#include "../headers/TADdicionario.h"
+#include "../headers/TADdicionario.h"
 
 int main(){
     ListaPala lista;
