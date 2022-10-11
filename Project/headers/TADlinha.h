@@ -1,6 +1,10 @@
+#ifndef TADlinha_h
+#define TADlinha_h
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 
 typedef struct{
     int l;
@@ -23,3 +27,5 @@ void LL_Inserir(Lista_Linha* linha, Tlinha* num);
 void LL_Imprimir(Lista_Linha* linha);
 void LL_ExcluirFinal(Lista_Linha* linha);
 void LL_ExcluirEspecifico(Lista_Linha* linha, Tlinha* num);
+
+#endif
