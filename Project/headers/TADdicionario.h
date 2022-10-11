@@ -22,7 +22,7 @@ typedef struct{
 }lista_letra;
 
 //inicializa lista de letras
-void inicia_lista_lista_letra(lista_letra *lista);
+void inicia_lista_lista_letra(lista_letra *lista, ListaPala *pala);
 
 //insere letra na lista
 void insere_letra(lista_letra *lista, letra l);

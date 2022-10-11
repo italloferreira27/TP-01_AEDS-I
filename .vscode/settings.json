@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "tadd.h": "c"
+        "tadd.h": "c",
+        "taddicionario.h": "c"
     }
 }
