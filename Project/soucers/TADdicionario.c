@@ -18,13 +18,13 @@ void insere_letra(lista_letra *lista, letra l){
    
    if(lista->primeiro!=lista->utimo){
     
-    while(l.letra[0] > aux->Letra.letra[0] && aux != NULL){
+    while(l.letra > aux->Letra.letra && aux != NULL){
             aux = aux->prox;
             auxAnt = auxAnt->prox;
         }
     }
 
-    if(lista->primeiro->prox != NULL && lista->utimo != auxAnt){
+    if(lista->primeiro->prox == NULL || lista->utimo == auxAnt->prox && l.letra > lista->utimo->Letra.letra){
         
         auxAnt->prox = (celula_letra *)malloc(sizeof(celula_letra));
         auxAnt->prox->Letra = l;
@@ -47,7 +47,7 @@ int verifica_letra(lista_letra *lista, letra l){
     int i,cont;
 
     while(inicio != NULL){
-        if(inicio->Letra.letra[0] == l.letra[0]){
+        if(inicio->Letra.letra == l.letra){
             return 1;
         }
         inicio = inicio->prox;
