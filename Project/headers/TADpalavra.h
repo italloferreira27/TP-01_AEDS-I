@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../headers/TADlinha.h"
+//#include "../headers/TADlinha.h"
 
 //definindo tipo char
 typedef char TIPOpalavra;
@@ -12,7 +12,7 @@ typedef char TIPOpalavra;
 //definicao do TAD palavra
 typedef struct{
     TIPOpalavra item[50];
-    Apontado linhaP; //Aponta para a linha da palavra
+    //Apontado linhaP; //Aponta para a linha da palavra
 }TPalavra;
 
 //definindo apontador para celula
@@ -28,7 +28,7 @@ typedef struct celulapalavra{
 typedef struct{
     Apontador Primeiro;
     Apontador Ulitmo;
-    Apontado linhaL;
+    //Apontado linhaL;
     int nroElem; //numero de elementos
 }ListaPala; //Lista palavra
 

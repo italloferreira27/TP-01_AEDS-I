@@ -1,31 +1,32 @@
 #ifndef TADlinha_h
 #define TADlinha_h
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
-
+typedef int Tipochave;
 typedef struct{
-    int l;
-}Tlinha;
+    Tipochave chave; 
+}Titem;
 
-typedef struct linha *Apontado;
-typedef struct linha{
-    Tlinha NumLinha;
-    struct linha* prox;
-}celula_linha;
+typedef struct Celula_Linha* Apontado;
+typedef struct Celula_Linha{
+    Titem linha;
+    struct Celula_Linha* prox;
+}Celula_Linha;
 
 typedef struct{
     Apontado Primeiro;
     Apontado Ultimo;
-}Lista_Linha;
+}Tlista;
 
-int LL_vazia(Lista_Linha *linha);
-void LL_Inicializa(Lista_Linha* linha);
-void LL_Inserir(Lista_Linha* linha, Tlinha* num);
-void LL_Imprimir(Lista_Linha* linha);
-void LL_ExcluirFinal(Lista_Linha* linha);
-void LL_ExcluirEspecifico(Lista_Linha* linha, Tlinha* num);
+int LL_Vazia(Tlista* lista);
+void LL_Inicializa(Tlista* lista);
+void LL_Inserir(Tlista* lista, Titem item);
+int LL_Imprimir(Tlista* lista);
+int LL_Procurar(Tlista* lista, int item);
+int LL_ExcluirFinal(Tlista* lista);
+int LL_ExcluirEspecifico(Tlista* lista, int item);
 
 #endif

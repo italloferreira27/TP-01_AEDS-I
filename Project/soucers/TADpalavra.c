@@ -171,8 +171,10 @@ void InstrucoesLP(void){
     "2 para para procurar se elemento existe.\n"
     "3 para excluir um elemento na lista.\n"
     "4 para excluir um elemento no final da lista.\n"
-    "5 para exibir quantas palavras existem.\n"
-    "6 para imprimir a lista de palavras.\n"
-    "7 para imprimir palavra desejada e suas linhas.\n"
-    "8 para terminar.\n");
+    "5 para excluir todas palavras que começam com a letra desejada.\n"
+    "6 para exibir quantas palavras existem.\n"
+    "7 para imprimir a lista de palavras.\n"
+    "8 para imprimir palavra desejada e suas linhas.\n"
+    "9 para imprimir letra com todas as palavras dela especifica do dicionario.\n"
+    "10 para terminar.\n");
 }
