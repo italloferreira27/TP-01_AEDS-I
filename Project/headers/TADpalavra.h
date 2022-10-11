@@ -1,3 +1,6 @@
+#ifndef TADpalavra_h
+#define TADpalavra_h
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -40,3 +43,5 @@ int TamanhoLP(ListaPala LP); //funcao 8
 void ImprimirLP(ListaPala *LP); //funcao 6
 void ImprimirLPespecifica(ListaPala *LP, char *pl);//funcao 7
 void InstrucoesLP(void); //lista de comandos que sera exibida para o usuario
+
+#endif
