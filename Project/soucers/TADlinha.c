@@ -1,67 +1,99 @@
 #include "../headers/TADlinha.h"
 
-
-int LL_vazia(Lista_Linha *linha){
-    return linha->Primeiro == linha->Ultimo; 
+int LL_Vazia(Tlista* lista){
+    return lista->Primeiro == lista->Ultimo;
 }
 
-void LL_Inicializa(Lista_Linha *linha){
-    linha->Primeiro = (Apontado) malloc(sizeof(celula_linha));
-    linha->Ultimo = linha->Primeiro;
-    linha->Primeiro->prox = NULL;
+void LL_Inicializa(Tlista* lista){
+    lista->Primeiro = (Apontado) malloc(sizeof(Celula_Linha));
+    lista->Ultimo = lista->Primeiro;
+    lista->Primeiro->prox = NULL;
 }
 
-void LL_Inserir(Lista_Linha *linha, Tlinha* num){
-    linha->Ultimo->prox = (Apontado) malloc(sizeof(celula_linha));
-    linha->Ultimo = linha->Ultimo->prox;
-    linha->Ultimo->NumLinha = *num;
-    linha->Ultimo->prox = NULL;
+void LL_Inserir(Tlista* lista, Titem item){
+    lista->Ultimo->prox = (Apontado) malloc(sizeof(Celula_Linha));
+    lista->Ultimo = lista->Ultimo->prox;
+    lista->Ultimo->linha = item;
+    lista->Ultimo->prox = NULL;
+    printf("Inserido com sucesso!\n");
 }
 
-void LL_Imprimir(Lista_Linha* linha){
+int LL_Imprimir(Tlista* lista){
     Apontado aux;
-    aux = linha->Primeiro->prox;
-    
-    printf("Linhas: ");
+
+    if(LL_Vazia(lista)){
+        printf("Lista vazia!\n");
+        return 0;
+    }
+
+    aux = lista->Primeiro->prox;
+
+    printf("Linha: ");
     while(aux != NULL){
-        printf("|%d|", aux->NumLinha.l);
+        printf("|%d", aux->linha.chave);
         aux = aux->prox;
     }
+    printf("|\n");
 }
 
-void LL_ExcluirFinal(Lista_Linha* linha){
-    if(LL_vazia){
-        return 0;
-    }
-    celula_linha *paux = linha->Primeiro->prox;
-    celula_linha *pant = linha->Primeiro;
+int LL_Procurar(Tlista* lista, int item){
+    Apontado aux;
+    aux = lista->Primeiro;
 
-    while(paux->prox != NULL){
-        paux = paux->prox;
-        pant = pant->prox;
+    while(aux->prox != NULL){
+        if(aux->linha.chave == item){
+            printf("Existe linha!\n");
+            return 1;
+        }
+        aux = aux->prox;
     }
-
-    if(paux != NULL){
-        pant->prox = paux->prox;
-        free(paux);
-    }
-
+    return 0;
 }
 
-void LL_ExcluirEspecifico(Lista_Linha* linha, Tlinha* num){
-    Apontado paux = linha->Primeiro->prox;
-    Apontado pant = linha->Primeiro;    
-
-    if(LL_vazia){
+int LL_ExcluirFinal(Tlista* lista){
+    if(LL_Vazia(lista)){
+        printf("lista vazia!\n");
         return 0;
     }
 
-    while(paux != num){
-        paux = paux->prox;
-        pant = pant->prox;
+    Apontado aux = lista->Primeiro->prox;
+    Apontado ant = lista->Primeiro;
+
+    while(aux != NULL){
+        if(aux->prox == NULL){
+            aux = lista->Ultimo;
+            lista->Ultimo = ant;
+            lista->Ultimo->prox = NULL;
+            free(aux);
+            printf("EXCLUIDO!\n");
+            return 0;
+        }
+        aux = aux->prox;
+        ant = ant->prox;
     }
-    if(paux != NULL){
-        pant->prox = paux->prox;
-        free(paux);
+}
+
+int LL_ExcluirEspecifico(Tlista* lista, int item){
+    Apontado aux = lista->Primeiro->prox;
+    Apontado ant = lista->Primeiro;
+
+    if(LL_Vazia(lista)){
+        printf("lista vazia!\n");
+        return 0;
     }
+
+    if(LL_Procurar(lista, item)){
+        while(aux != NULL){
+            if(aux->linha.chave == item){
+                ant->prox = aux->prox;
+                free(aux);
+                printf("Linha removida!\n");
+                return 0;
+            }
+            aux = aux->prox;
+            ant = ant->prox;
+        }
+    }
+    printf("Linha não encontrada!\n");
+    return 0;
 }
