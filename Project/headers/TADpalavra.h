@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include "../headers/TADlinha.h"
 
 //definindo tipo char
 typedef char TIPOpalavra;

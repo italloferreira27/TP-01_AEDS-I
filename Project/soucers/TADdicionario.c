@@ -14,44 +14,29 @@
 }*/
 
 //inicializa lista de letras
-void inicia_lista_lista_letra(lista_letra *lista, ListaPala *pala){
+void inicia_lista_lista_letra(lista_letra *lista){
     lista->primeiro = (celula_letra *)malloc(sizeof(celula_letra));
     lista->utimo = lista->primeiro;
     lista->utimo->prox = NULL;
+    //lista->primeiro->Letra.Pala = NULL;
 }
 
 //insere letra na lista
 void insere_letra(lista_letra *lista, letra l, char *charptr){
     celula_letra *aux = lista->primeiro->prox;
     celula_letra *auxAnt = lista->primeiro;
+    Apontador AUXptr;
    
-    if(lista->primeiro!=lista->utimo){
+   if(lista->primeiro!=lista->utimo){
     
-    while(l.letra > aux->Letra.letra && aux != NULL){
+    while(l.letra >= aux->Letra.letra && aux->prox != NULL){
             aux = aux->prox;
             auxAnt = auxAnt->prox;
         }
-    //printf("%c",aux->Letra.letra);
-    auxAjuda = aux->prox;
-    aux->prox = NULL;
-    aux->prox = (celula_letra *)malloc(sizeof(celula_letra));
-    aux->prox->Letra = l;
-    aux = aux->prox;
-    aux->prox = auxAjuda; 
     }
 
-    
-
-
-
-    /*if(lista->primeiro->prox == NULL || lista->utimo == auxAnt->prox && l.letra > lista->utimo->Letra.letra){
+    if(lista->primeiro->prox == NULL || lista->utimo == auxAnt->prox && l.letra > lista->utimo->Letra.letra){
         
-        auxAnt->prox = (celula_letra *)malloc(sizeof(celula_letra));
-        auxAnt->prox->Letra = l;
-        auxAnt->prox->prox = aux;
-    
-    }else{
-    
         lista->utimo->prox = (celula_letra *)malloc(sizeof(celula_letra));
         lista->utimo = lista->utimo->prox;
         lista->utimo->Letra = l;
@@ -99,8 +84,8 @@ void imprimeletra(lista_letra *lista){
     celula_letra *aux = lista->primeiro->prox;
 
     while(aux != NULL){
-        printf("%s\n",aux->Letra.letra);
-        //imprime palavra aqui
+        printf("%c\n",aux->Letra.letra);
+        ImprimirLP(aux->Letra.Pala);
         aux = aux->prox;
     }
 
@@ -111,7 +96,7 @@ void imprimeletradada(lista_letra *lista){
     celula_letra *aux = lista->primeiro->prox;
     char dada;
 
-    scanf("%s",&dada);
+    scanf("%c",&dada);
     
     while (aux->prox != NULL){
         if(dada == aux->Letra.letra){

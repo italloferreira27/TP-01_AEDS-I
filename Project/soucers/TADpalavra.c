@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../headers/TADpalavra.h"
+#include "TADpalavra.h"
+#include "TADdicionario.h"
 
 //verificar se a lista esta vazia
 int ListaVaziaLP(ListaPala *LP){
@@ -10,10 +11,12 @@ int ListaVaziaLP(ListaPala *LP){
 
 //inicializar o Lista Palavra
 void InicializarLP(ListaPala *LP){
+
     LP->Primeiro = (Apontador) malloc(sizeof(celulapalavra));
     LP->Ulitmo = LP->Primeiro;
-    LP->Primeiro->prox = NULL;
-    LP->nroElem = 0;
+    LP->Ulitmo->prox= NULL;
+    LP->nroElem = 0; 
+    
 }
 
 //inserir nova Lista de Palavra //funcao 1
@@ -21,6 +24,7 @@ void InserirElemLP(ListaPala *LP, TPalavra item, char *charptr){
     //result para verificar se a palavra ja exite
     int result;
     result = ProcurarLP(LP, charptr);
+    strcpy(item.item , charptr);
 
     if(result == 0){
         LP->Ulitmo->prox = (Apontador) malloc(sizeof(celulapalavra));
@@ -171,10 +175,8 @@ void InstrucoesLP(void){
     "2 para para procurar se elemento existe.\n"
     "3 para excluir um elemento na lista.\n"
     "4 para excluir um elemento no final da lista.\n"
-    "5 para excluir todas palavras que começam com a letra desejada.\n"
-    "6 para exibir quantas palavras existem.\n"
-    "7 para imprimir a lista de palavras.\n"
-    "8 para imprimir palavra desejada e suas linhas.\n"
-    "9 para imprimir letra com todas as palavras dela especifica do dicionario.\n"
-    "10 para terminar.\n");
+    "5 para exibir quantas palavras existem.\n"
+    "6 para imprimir a lista de palavras.\n"
+    "7 para imprimir palavra desejada e suas linhas.\n"
+    "8 para terminar.\n");
 }
