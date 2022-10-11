@@ -31,7 +31,7 @@ void LL_Imprimir(Lista_Linha* linha){
 
 void LL_ExcluirFinal(Lista_Linha* linha){
     if(LL_vazia){
-        return 0;
+        return;
     }
     celula_linha *paux = linha->Primeiro->prox;
     celula_linha *pant = linha->Primeiro;
@@ -53,10 +53,10 @@ void LL_ExcluirEspecifico(Lista_Linha* linha, Tlinha* num){
     Apontado pant = linha->Primeiro;    
 
     if(LL_vazia){
-        return 0;
+        return;
     }
 
-    while(paux != num){
+    while(paux->NumLinha.l != num){
         paux = paux->prox;
         pant = pant->prox;
     }

@@ -1,12 +1,12 @@
-#ifndef TADdicionario_h
-#define TADddicionariio_h
+#ifndef TADDICIONARIO_H
+#define TADDICIONARIO_H
 
 #include "TADpalavra.h"
 
 //letra
 typedef struct {
     char letra;
-    ListaPala *palavras;
+    ListaPala *Pala;
 }letra;
 
 //celula letra
@@ -25,15 +25,16 @@ typedef struct{
 void inicia_lista_lista_letra(lista_letra *lista);
 
 //insere letra na lista
-void insere_letra(lista_letra *lista, letra l);
+void insere_letra(lista_letra *lista, letra l,char *Palavra );
 
 //verifica se a letra ja exista(chamar para inserir palavra)
-int verifica_letra(lista_letra *lista, letra l);
+int verifica_letra(lista_letra *lista, letra l, char *charptr);
 
 // imprime lista
 void imprimeletra(lista_letra *lista);
 
 //imprime letra dada
 void imprimeletradada(lista_letra *lista);
+
 
 #endif
