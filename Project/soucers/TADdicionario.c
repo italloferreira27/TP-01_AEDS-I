@@ -4,15 +4,6 @@
 #include "../headers/TADdicionario.h"
 #include "../headers/TADpalavra.h"
 
-//inicializar o Lista Palavra
-/*void InicializarLP(letra *LP){
-    LP->palavras = (ListaPala *)malloc(sizeof(ListaPala));
-    LP->palavras->Primeiro = (Apontador) malloc(sizeof(celulapalavra));
-    LP->palavras->Ulitmo = LP->palavras->Primeiro;
-    LP->palavras->Ulitmo->prox= NULL;
-    LP->palavras->nroElem = 0; 
-}*/
-
 //inicializa lista de letras
 void inicia_lista_lista_letra(lista_letra *lista){
     lista->primeiro = (celula_letra *)malloc(sizeof(celula_letra));
@@ -50,7 +41,7 @@ void insere_letra(lista_letra *lista, letra l, char *charptr){
         
         auxAnt->prox = (celula_letra *)malloc(sizeof(celula_letra));
         auxAnt->prox->Letra = l;
-        auxAnt->prox->prox = aux;      
+        auxAnt->prox->prox = aux;    
     } 
 }
 
@@ -95,7 +86,7 @@ void imprimeletradada(lista_letra *letra, char l){
 
     auxptr = letra->primeiro->prox;
 
-    while(auxptr->prox != NULL){
+    while(auxptr != NULL){
         if(auxptr->Letra.letra == l){
             ImprimirLP(auxptr->Letra.Pala);
             return;
@@ -113,7 +104,7 @@ void ProcurarPalavra(lista_letra *letra, char *pl, char l){
 
     auxptr = letra->primeiro->prox;
 
-    while(auxptr->prox != NULL){
+    while(auxptr != NULL){
         if(auxptr->Letra.letra == l){
             result = ProcurarLP(auxptr->Letra.Pala, pl);
             if(result == 1){
@@ -135,7 +126,7 @@ void ExcluirElemEspecifico(lista_letra *letra, char *pl, char l){ //funcao 3
 
     auxptr = letra->primeiro->prox;
 
-    while(auxptr->prox != NULL){
+    while(auxptr != NULL){
         if(auxptr->Letra.letra == l){
             ExcluirElemLPEspecifico(auxptr->Letra.Pala, pl);
             return;
@@ -151,7 +142,7 @@ void ExcluirElemFinal(lista_letra *letra, char l){ //funcao 4
 
     auxptr = letra->primeiro->prox;
 
-    while(auxptr->prox != NULL){
+    while(auxptr != NULL){
         if(auxptr->Letra.letra == l){
             ExcluirElemLPfinal(auxptr->Letra.Pala);
             return;
@@ -166,7 +157,7 @@ void TamanhoLetra(lista_letra *letra, char l){
 
     auxptr = letra->primeiro->prox;
 
-    while(auxptr->prox != NULL){
+    while(auxptr != NULL){
         if(auxptr->Letra.letra == l){
             printf("%d\n", TamanhoLP(auxptr->Letra.Pala));
             return;
@@ -181,7 +172,7 @@ void PalavraEsp(lista_letra *letra, char *pl, char l){
 
     auxptr = letra->primeiro->prox;
 
-    while(auxptr->prox != NULL){
+    while(auxptr != NULL){
         if(auxptr->Letra.letra == l){
             ImprimirLPespecifica(auxptr->Letra.Pala, pl);
             return;
