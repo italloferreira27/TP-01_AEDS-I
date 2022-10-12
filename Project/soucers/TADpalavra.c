@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "TADpalavra.h"
-#include "TADdicionario.h"
+#include "../headers/TADpalavra.h"
+#include "../headers/TADdicionario.h"
 
 //verificar se a lista esta vazia
 int ListaVaziaLP(ListaPala *LP){
@@ -58,13 +58,29 @@ void ImprimirLP(ListaPala *LP){
 }
 
 //imprimi a palavra desejada
-void ImprimirLPespecifica(ListaPala *LP, char *pl){
+/*void ImprimirLPespecifica(ListaPala *LP, lista_letra *letra, char *pl){
     Apontador aux;
+    celula_letra *auxl;
     int result,r;
+    char l;
+    l = pl[0];
     aux = LP->Primeiro->prox;
+    auxl = letra->primeiro->Letra.letra;
+
+    while (auxl->Letra.letra != l){
+        if(auxl->Letra.letra == l){
+            printf("Letra existe.\n");
+        }
+        else{
+            printf("Letra nao existe.\n");
+            return;
+        }
+        auxl = auxl->prox;
+    }
+    
 
     //verificar se elemento existe
-    r = ProcurarLP(LP,pl);
+    r = ProcurarLP(letra,pl);
 
     if(r == 1){
         printf("Palavra existe.\n");
@@ -80,7 +96,7 @@ void ImprimirLPespecifica(ListaPala *LP, char *pl){
         printf("Palavra nao existe.\n");
     }
     return;
-}
+}*/
 
 int ProcurarLP(ListaPala *LP, char *pl){ //funcao 2
     Apontador aux;
@@ -100,7 +116,7 @@ int ProcurarLP(ListaPala *LP, char *pl){ //funcao 2
 }
 
 //excluir lista que tenha elemento que o usuario pediu
-void ExcluirElemLPEspecifico(ListaPala *LP, char *pl){ //funcao 3
+/*void ExcluirElemLPEspecifico(ListaPala *LP, char *pl){ //funcao 3
     Apontador ANTptr; //guardar posicao celula anterior
     Apontador aux;
     Apontador Cauxptr;
@@ -161,7 +177,7 @@ void ExcluirElemLPfinal(ListaPala *LP){ //funcao 4
         ANTptr = ANTptr->prox;
         aux = aux->prox;
     }
-}
+}*/
 
 //retornar quantidade de palavras
 int TamanhoLP(ListaPala LP){ //funcao 8
@@ -178,5 +194,6 @@ void InstrucoesLP(void){
     "5 para exibir quantas palavras existem.\n"
     "6 para imprimir a lista de palavras.\n"
     "7 para imprimir palavra desejada e suas linhas.\n"
-    "8 para terminar.\n");
+    "8 para imprimir todas as palavras de uma determinada letra.\n"
+    "9 para terminar.\n");
 }

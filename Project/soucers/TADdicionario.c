@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "TADdicionario.h"
-#include "TADpalavra.h"
+#include "../headers/TADdicionario.h"
+#include "../headers/TADpalavra.h"
 
 //inicializar o Lista Palavra
 /*void InicializarLP(letra *LP){
@@ -95,15 +95,108 @@ void imprimeletra(lista_letra *lista){
 void imprimeletradada(lista_letra *lista){
     celula_letra *aux = lista->primeiro->prox;
     char dada;
-
+    printf("Digite a letra que quer imprimir as palavras: ");
     scanf("%c",&dada);
     
+    printf("%c\n",dada);
     while (aux->prox != NULL){
         if(dada == aux->Letra.letra){
-            printf("!");
-            break;
+            printf("%c\n",aux->Letra.letra);
+            ImprimirLP(aux->Letra.Pala);
+            
         }
+        aux = aux->prox;
+    }
+    printf("\n");
+    //printf("%c/n",aux->Letra.letra);
+}
+
+//procurar palavra especifica
+int ProcurarPalavra(ListaPala *LP, lista_letra *letra, char *pl, char l){
+    Apontador aux;
+    celula_letra *auxL;
+    int result;
+    aux = LP->Primeiro->prox;
+    auxL = letra->primeiro->prox;
+    
+    while (auxL != NULL){
+        if(auxL->Letra.letra == l){
+            while (aux != NULL){
+                result = strcmp(aux->palavra.item, pl);
+                if(result == 0){
+                    //printf("Palavra existe.\n");
+                    return 1;
+                }
+                aux = aux->prox;
+            }
+            //printf("Palavra nao existe.\n");
+            return 0;
+        }
+        auxL = auxL->prox;
     }
 
-    printf("%c/n",aux->Letra.letra);
+}
+
+//excluir lista que tenha elemento que o usuario pediu
+void ExcluirElemLPEspecifico(ListaPala *LP, lista_letra *letra, char *pl){ //funcao 3
+    Apontador ANTptr; //guardar posicao celula anterior
+    Apontador aux;
+    Apontador Cauxptr;
+    int result;
+    ANTptr = LP->Primeiro;
+    aux = LP->Primeiro->prox;
+    
+    //verificar se a lista estavazia
+    if(ListaVaziaLP(LP)){
+        printf("Lista esta Vazia.\n");
+        return; 
+    }
+    //verficar se o elemento existe
+    result = ProcurarLP(LP,pl);
+    if(result == 0){
+        printf("Palavra nao existe.\n");
+        return;
+    }
+
+    while (aux != NULL){
+        result = strcmp(aux->palavra.item, pl);
+        if(result == 0){
+            Cauxptr = aux;
+            ANTptr->prox = aux->prox;
+            free(Cauxptr);
+            printf("Palavra removida.\n");
+            return;
+        }
+        ANTptr = ANTptr->prox;
+        aux = aux->prox;
+    }
+}
+
+//excluir o ultimo elemento
+void ExcluirElemLPfinal(ListaPala *LP, lista_letra *letra){ //funcao 4
+    Apontador ANTptr; //guardar posicao celula anterior
+    Apontador aux;
+    Apontador Cauxptr;
+    int result;
+    ANTptr = LP->Primeiro;
+    aux = LP->Primeiro->prox;
+    
+    //verificar se a lista estavazia
+    if(ListaVaziaLP(LP)){
+        printf("Lista esta Vazia.\n");
+        return; 
+    }
+
+    while (1){
+        if(aux->prox == NULL){
+            Cauxptr = LP->Ulitmo;
+            LP->Ulitmo = ANTptr;
+            LP->Ulitmo->prox = NULL;
+            free(Cauxptr);
+            printf("Ultima palavra removida.\n");
+            return;
+        }
+        ANTptr = ANTptr->prox;
+        aux = aux->prox;
+    }
 }

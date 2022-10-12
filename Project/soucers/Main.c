@@ -8,11 +8,15 @@ int main(){
     ListaPala lista;
     TPalavra obj;
     lista_letra letras;
+    lista_letra *letr;
     letra let;
 
     int escolha, result;
     char palavra[50];
     char l;
+
+    celula_letra *auxptr;
+    celula_letra *aux1;
 
     FILE *TXTptr;
     TXTptr = fopen("texto.txt", "r");
@@ -20,9 +24,10 @@ int main(){
     InstrucoesLP(); //exibe menu de escolhas
     scanf("%d",&escolha);
 
-    inicia_lista_lista_letra(&letras, &lista);
+    inicia_lista_lista_letra(&letras);
 
-    while(escolha != 10){
+
+    while(escolha != 9){
         switch(escolha){
             case 1:
                 printf("Lendo arquivo de texto.\n");
@@ -34,7 +39,9 @@ int main(){
                     while (!feof(TXTptr)){
                         fscanf(TXTptr, "%s", palavra);
                         strcpy(obj.item, palavra);
-                        InserirElemLP(&lista, obj, palavra);//funcao 1
+                        //InserirElemLP(&lista, obj, palavra);//funcao 1
+                        let.letra = palavra[0];
+                        verifica_letra(&letras, let, palavra);
                     }
                 }
                 fclose(TXTptr);
@@ -43,44 +50,50 @@ int main(){
             case 2:
                 printf("Digite uma palavra que queira verificar: ");
                 scanf("%s",palavra);
-                ProcurarLP(&lista, palavra);//funcao 2
+                l = palavra[0];
+                result = ProcurarPalavra(letras.primeiro->prox->Letra.Pala, &letras, palavra, l); //funcao 2
+                if(result == 1){
+                    printf("Palavra existe.\n");
+                }
+                else{
+                    printf("Palavra nao existe.\n");
+                }
                 break;
+            //arrumar
             case 3:
                 printf("Digite a palavra que queria excluir: ");
                 scanf("%s",palavra);
-                ExcluirElemLPEspecifico(&lista, palavra);
+                //ExcluirElemLPEspecifico(&lista, palavra);
                 break;
+            //arrumar
             case 4:
-                printf("Ultima palavra sera excluitda.\n");
-                ExcluirElemLPfinal(&lista);
+                printf("Digite a letra no qual sera removido a ultima palavra: ");
+                scanf("%c",&l);
+                printf("Ultima palavra sera excluida.\n");
+                auxptr = letr->primeiro;
+                while(auxptr->prox != NULL){
+                    if(auxptr->prox->Letra.letra == l){
+                        ExcluirElemLPfinal(auxptr->Letra.Pala, &letras);
+                    }
+                    auxptr = auxptr->prox;
+                }
                 break;
+            //arrumar
             case 5:
                 printf("Sera exibido a quantidade de palavras existentes.\n");
-                printf("%d\n",result = TamanhoLP(lista));
+                //printf("%d\n",TamanhoLP(auxptr->Letra.Pala));
                 break; 
             case 6:
-                ImprimirLP(&lista);
+                imprimeletra(&letras);
                 break;
+            //arrumar
             case 7:
                 printf("Digite uma palavra para saber em quais linhas ela aparece: ");
                 scanf("%s",palavra);
-                ImprimirLPespecifica(&lista, palavra);//funcao 7
+                //ImprimirLPespecifica(&lista, &letras, palavra);//funcao 7
                 break;
             case 8:
-                printf("Inserir letra: ");
-                scanf("%s",&l);
-                let.letra = l;
-                result = verifica_letra(&letras, let);
-                if(result == 1){
-                    printf("letra nao inserida.\n");
-                }
-                else{
-                    printf("letra inserida.\n");
-                }
-                break;
-            case 9:
-                printf("Imprimir letra.\n");
-                imprimeletra(&letras);
+                imprimeletradada(&letras);
                 break;
             default:
                 printf("Escolha invalida.\n\n");
