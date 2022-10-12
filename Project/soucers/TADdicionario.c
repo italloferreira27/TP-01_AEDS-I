@@ -50,9 +50,7 @@ void insere_letra(lista_letra *lista, letra l, char *charptr){
         
         auxAnt->prox = (celula_letra *)malloc(sizeof(celula_letra));
         auxAnt->prox->Letra = l;
-        auxAnt->prox->prox = aux;
-        printf("!");
-        
+        auxAnt->prox->prox = aux;      
     } 
 }
 
@@ -92,111 +90,103 @@ void imprimeletra(lista_letra *lista){
 }
 
 //imprime letra dada
-void imprimeletradada(lista_letra *lista){
-    celula_letra *aux = lista->primeiro->prox;
-    char dada;
-    printf("Digite a letra que quer imprimir as palavras: ");
-    scanf("%c",&dada);
-    
-    printf("%c\n",dada);
-    while (aux->prox != NULL){
-        if(dada == aux->Letra.letra){
-            printf("%c\n",aux->Letra.letra);
-            ImprimirLP(aux->Letra.Pala);
-            
+void imprimeletradada(lista_letra *letra, char l){
+    celula_letra *auxptr;
+
+    auxptr = letra->primeiro->prox;
+
+    while(auxptr->prox != NULL){
+        if(auxptr->Letra.letra == l){
+            ImprimirLP(auxptr->Letra.Pala);
+            return;
         }
-        aux = aux->prox;
+        auxptr = auxptr->prox;
     }
-    printf("\n");
-    //printf("%c/n",aux->Letra.letra);
+    printf("letra nao existe.\n");
+
 }
 
 //procurar palavra especifica
-int ProcurarPalavra(ListaPala *LP, lista_letra *letra, char *pl, char l){
-    Apontador aux;
-    celula_letra *auxL;
+void ProcurarPalavra(lista_letra *letra, char *pl, char l){
     int result;
-    aux = LP->Primeiro->prox;
-    auxL = letra->primeiro->prox;
-    
-    while (auxL != NULL){
-        if(auxL->Letra.letra == l){
-            while (aux != NULL){
-                result = strcmp(aux->palavra.item, pl);
-                if(result == 0){
-                    //printf("Palavra existe.\n");
-                    return 1;
-                }
-                aux = aux->prox;
+    celula_letra *auxptr;
+
+    auxptr = letra->primeiro->prox;
+
+    while(auxptr->prox != NULL){
+        if(auxptr->Letra.letra == l){
+            result = ProcurarLP(auxptr->Letra.Pala, pl);
+            if(result == 1){
+                    printf("Palavra existe.\n");
             }
-            //printf("Palavra nao existe.\n");
-            return 0;
+            else{
+                    printf("Palavra nao existe.\n");
+            }
+            return;
         }
-        auxL = auxL->prox;
+        auxptr = auxptr->prox;
     }
 
 }
 
 //excluir lista que tenha elemento que o usuario pediu
-void ExcluirElemLPEspecifico(ListaPala *LP, lista_letra *letra, char *pl){ //funcao 3
-    Apontador ANTptr; //guardar posicao celula anterior
-    Apontador aux;
-    Apontador Cauxptr;
-    int result;
-    ANTptr = LP->Primeiro;
-    aux = LP->Primeiro->prox;
-    
-    //verificar se a lista estavazia
-    if(ListaVaziaLP(LP)){
-        printf("Lista esta Vazia.\n");
-        return; 
-    }
-    //verficar se o elemento existe
-    result = ProcurarLP(LP,pl);
-    if(result == 0){
-        printf("Palavra nao existe.\n");
-        return;
-    }
+void ExcluirElemEspecifico(lista_letra *letra, char *pl, char l){ //funcao 3
+    celula_letra *auxptr;
 
-    while (aux != NULL){
-        result = strcmp(aux->palavra.item, pl);
-        if(result == 0){
-            Cauxptr = aux;
-            ANTptr->prox = aux->prox;
-            free(Cauxptr);
-            printf("Palavra removida.\n");
+    auxptr = letra->primeiro->prox;
+
+    while(auxptr->prox != NULL){
+        if(auxptr->Letra.letra == l){
+            ExcluirElemLPEspecifico(auxptr->Letra.Pala, pl);
             return;
         }
-        ANTptr = ANTptr->prox;
-        aux = aux->prox;
+        auxptr = auxptr->prox;
     }
+    printf("letra nao existe.\n");
 }
 
 //excluir o ultimo elemento
-void ExcluirElemLPfinal(ListaPala *LP, lista_letra *letra){ //funcao 4
-    Apontador ANTptr; //guardar posicao celula anterior
-    Apontador aux;
-    Apontador Cauxptr;
-    int result;
-    ANTptr = LP->Primeiro;
-    aux = LP->Primeiro->prox;
-    
-    //verificar se a lista estavazia
-    if(ListaVaziaLP(LP)){
-        printf("Lista esta Vazia.\n");
-        return; 
-    }
+void ExcluirElemFinal(lista_letra *letra, char l){ //funcao 4
+    celula_letra *auxptr;
 
-    while (1){
-        if(aux->prox == NULL){
-            Cauxptr = LP->Ulitmo;
-            LP->Ulitmo = ANTptr;
-            LP->Ulitmo->prox = NULL;
-            free(Cauxptr);
-            printf("Ultima palavra removida.\n");
+    auxptr = letra->primeiro->prox;
+
+    while(auxptr->prox != NULL){
+        if(auxptr->Letra.letra == l){
+            ExcluirElemLPfinal(auxptr->Letra.Pala);
             return;
         }
-        ANTptr = ANTptr->prox;
-        aux = aux->prox;
+        auxptr = auxptr->prox;
     }
+    printf("letra nao existe.\n");
+}
+
+void TamanhoLetra(lista_letra *letra, char l){
+    celula_letra *auxptr;
+
+    auxptr = letra->primeiro->prox;
+
+    while(auxptr->prox != NULL){
+        if(auxptr->Letra.letra == l){
+            printf("%d\n", TamanhoLP(auxptr->Letra.Pala));
+            return;
+        }
+        auxptr = auxptr->prox;
+    }
+    printf("letra nao existe.\n");
+}
+
+void PalavraEsp(lista_letra *letra, char *pl, char l){
+    celula_letra *auxptr;
+
+    auxptr = letra->primeiro->prox;
+
+    while(auxptr->prox != NULL){
+        if(auxptr->Letra.letra == l){
+            ImprimirLPespecifica(auxptr->Letra.Pala, pl);
+            return;
+        }
+        auxptr = auxptr->prox;
+    }
+    printf("letra nao existe.\n");
 }

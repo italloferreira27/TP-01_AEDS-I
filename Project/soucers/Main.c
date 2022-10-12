@@ -8,15 +8,13 @@ int main(){
     ListaPala lista;
     TPalavra obj;
     lista_letra letras;
-    lista_letra *letr;
+    //lista_letra *letr;
     letra let;
 
     int escolha, result;
     char palavra[50];
+    char z[1];
     char l;
-
-    celula_letra *auxptr;
-    celula_letra *aux1;
 
     FILE *TXTptr;
     TXTptr = fopen("texto.txt", "r");
@@ -29,6 +27,7 @@ int main(){
 
     while(escolha != 9){
         switch(escolha){
+            //funciona
             case 1:
                 printf("Lendo arquivo de texto.\n");
                 if(TXTptr == NULL){
@@ -47,53 +46,53 @@ int main(){
                 fclose(TXTptr);
                 printf("Leitura realizada com sucesso.\n");
                 break;
+            //funciona
             case 2:
                 printf("Digite uma palavra que queira verificar: ");
                 scanf("%s",palavra);
                 l = palavra[0];
-                result = ProcurarPalavra(letras.primeiro->prox->Letra.Pala, &letras, palavra, l); //funcao 2
-                if(result == 1){
-                    printf("Palavra existe.\n");
-                }
-                else{
-                    printf("Palavra nao existe.\n");
-                }
+                ProcurarPalavra(&letras, palavra, l); //funcao 2
                 break;
-            //arrumar
+            //funciona
             case 3:
                 printf("Digite a palavra que queria excluir: ");
                 scanf("%s",palavra);
-                //ExcluirElemLPEspecifico(&lista, palavra);
+                l = palavra[0];
+                ExcluirElemEspecifico(&letras, palavra, l);
                 break;
-            //arrumar
+            //funciona
             case 4:
                 printf("Digite a letra no qual sera removido a ultima palavra: ");
-                scanf("%c",&l);
+                scanf("%s",z);
+                l = z[0];
                 printf("Ultima palavra sera excluida.\n");
-                auxptr = letr->primeiro;
-                while(auxptr->prox != NULL){
-                    if(auxptr->prox->Letra.letra == l){
-                        ExcluirElemLPfinal(auxptr->Letra.Pala, &letras);
-                    }
-                    auxptr = auxptr->prox;
-                }
+                ExcluirElemFinal(&letras, l);
                 break;
-            //arrumar
+            //funciona
             case 5:
+                printf("Digite em qual letra voce quer saber a quantidade de palavra: ");
+                scanf("%s",z);
+                l = z[0];
                 printf("Sera exibido a quantidade de palavras existentes.\n");
-                //printf("%d\n",TamanhoLP(auxptr->Letra.Pala));
-                break; 
+                TamanhoLetra(&letras, l);
+                break;
+            //funciona 
             case 6:
                 imprimeletra(&letras);
                 break;
-            //arrumar
+            //funciona so nao imprime o ultimo TAD letra
             case 7:
                 printf("Digite uma palavra para saber em quais linhas ela aparece: ");
                 scanf("%s",palavra);
-                //ImprimirLPespecifica(&lista, &letras, palavra);//funcao 7
+                l = palavra[0];
+                PalavraEsp(&letras, palavra, l);
                 break;
+            //funciona
             case 8:
-                imprimeletradada(&letras);
+                printf("Digite a letra em que queira imprimir as palavras: ");
+                scanf("%s",z);
+                l = z[0];
+                imprimeletradada(&letras, l);
                 break;
             default:
                 printf("Escolha invalida.\n\n");

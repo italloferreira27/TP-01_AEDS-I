@@ -34,15 +34,21 @@ int verifica_letra(lista_letra *lista, letra l, char *charptr);
 void imprimeletra(lista_letra *lista);
 
 //imprime letra dada
-void imprimeletradada(lista_letra *lista);
+void imprimeletradada(lista_letra *lista, char l);
 
 //imprime palavra dada
-int ProcurarPalavra(ListaPala *LP, lista_letra *letra, char *pl, char);
+void ProcurarPalavra(lista_letra *letra, char *pl, char l);
 
 //excluir elemento final de uma letra
-void ExcluirElemLPfinal(ListaPala *LP, lista_letra *letra); //funcao 4 
+void ExcluirElemFinal(lista_letra *letra, char l); //funcao 4 
+
+//imprimir palavra especifica
+void PalavraEsp(lista_letra *letra, char *pl, char l); //funcao 7
 
 //excluir palavra dada
-void ExcluirElemLPEspecifico(ListaPala *LP, lista_letra *letra, char *pl); //funcao 3 
+void ExcluirElemEspecifico(lista_letra *letra, char *pl, char l); //funcao 3 
+
+//tamanho da lista de palavras
+void TamanhoLetra(lista_letra *letra, char l);
 
 #endif
