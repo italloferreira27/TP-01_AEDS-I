@@ -19,12 +19,15 @@ int main(){
     FILE *TXTptr;
     TXTptr = fopen("texto.txt", "r");
 
-    InstrucoesLP(); //exibe menu de escolhas
+    
     scanf("%d",&escolha);
 
     inicia_lista_lista_letra(&letras);
 
     while(escolha != 9){
+        
+        InstrucoesLP(); //exibe menu de escolhas
+        
         switch(escolha){
             //funciona
             case 1:
