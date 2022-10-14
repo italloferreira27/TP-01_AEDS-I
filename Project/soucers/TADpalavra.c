@@ -151,11 +151,13 @@ void ExcluirElemLPEspecifico(ListaPala *LP, char *pl){ //funcao 3
             ANTptr->prox = aux->prox;
             free(Cauxptr);
             printf("Palavra removida.\n");
+            LP->nroElem--;
             return;
         }
         ANTptr = ANTptr->prox;
         aux = aux->prox;
     }
+    
 }
 
 //excluir o ultimo elemento
@@ -180,6 +182,8 @@ void ExcluirElemLPfinal(ListaPala *LP){ //funcao 4
 
     Cauxptr = aux;
     ANTptr->prox = aux->prox;
+    free(Cauxptr);
+    LP->nroElem--;
 }
 
 //retornar quantidade de palavras

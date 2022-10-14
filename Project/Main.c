@@ -112,7 +112,7 @@ int main(){
                 break;
 
             case 8:
-                
+
                 imprimeletradada(&letras);
 
                 break;
