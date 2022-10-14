@@ -92,7 +92,7 @@ int main(){
 
             case 5:
 
-                printf("Sera exibido a quantidade de palavras existentes na lista da letra :");
+                printf("Sera exibido a quantidade de palavras existentes na lista da letra: ");
                 scanf("%s",pala);
                 trasport(&letras,pala,escolha);
 
@@ -112,7 +112,7 @@ int main(){
                 break;
 
             case 8:
-
+                
                 imprimeletradada(&letras);
 
                 break;

@@ -80,6 +80,7 @@ void imprimeletradada(lista_letra *lista){
     celula_letra *aux = lista->primeiro->prox;
     char dada[2];
 
+    printf("Digite a letra: ");
     scanf("%s",dada);
     
     while (aux != NULL){

@@ -184,7 +184,7 @@ void ExcluirElemLPfinal(ListaPala *LP){ //funcao 4
 
 //retornar quantidade de palavras
 void TamanhoLP(ListaPala *LP){ //funcao 8
-    printf("%d",LP->nroElem);
+    printf("A lista possui %d palavras.\n",LP->nroElem);
 }
 
 
