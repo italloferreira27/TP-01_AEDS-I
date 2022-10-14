@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "TADpalavra.h"
-#include "TADdicionario.h"
-#include "TADlinha.h"
+#include "../headers/TADpalavra.h"
+#include "../headers/TADdicionario.h"
 
 //verificar se a lista esta vazia
 int ListaVaziaLP(ListaPala *LP){
@@ -12,46 +11,29 @@ int ListaVaziaLP(ListaPala *LP){
 
 //inicializar o Lista Palavra
 void InicializarLP(ListaPala *LP){
-    //LP = (ListaPala *)malloc(sizeof(ListaPala));
+
     LP->Primeiro = (Apontador) malloc(sizeof(celulapalavra));
     LP->Ulitmo = LP->Primeiro;
     LP->Ulitmo->prox= NULL;
     LP->nroElem = 0; 
+    
 }
 
 //inserir nova Lista de Palavra //funcao 1
-void InserirElemLP(ListaPala *LP, TPalavra t, char *charptr,int cont){
+void InserirElemLP(ListaPala *LP, TPalavra item, char *charptr){
     //result para verificar se a palavra ja exite
-    celulapalavra *inicio = LP->Primeiro->prox;
     int result;
     result = ProcurarLP(LP, charptr);
-    while(inicio != NULL ){
-        if(strcmp(charptr,inicio->palavra.item) == 0){
-            //printf("!\n");
-            break;
-        }
-        inicio = inicio->prox;
-    }
-
-    strcpy(t.item , charptr);
+    strcpy(item.item , charptr);
 
     if(result == 0){
-
-        t.lista_linha = (Tlista *)malloc(sizeof(Tlista));
-        LL_Inicializa(t.lista_linha);
-        LL_Inserir(t.lista_linha,t.lista_linha->Ultimo->linha,cont);
-        
         LP->Ulitmo->prox = (Apontador) malloc(sizeof(celulapalavra));
         LP->Ulitmo = LP->Ulitmo->prox;
-        LP->Ulitmo->palavra = t; 
-        LP->Ulitmo->prox = NULL;
-        
+        if(LP->Ulitmo != NULL){ //espaco esta disponivel
+            LP->Ulitmo->palavra = item; 
+            LP->Ulitmo->prox = NULL;
+        }
         LP->nroElem++;
-    }
-    else{
-
-        LL_Inserir(inicio->palavra.lista_linha,inicio->palavra.lista_linha->Ultimo->linha,cont);
-
     }
 }
 
@@ -68,7 +50,7 @@ void ImprimirLP(ListaPala *LP){
     while (aux != NULL){
         printf("-----------------------\n");
         printf("Palavra: %s\n",aux->palavra.item);
-        LL_Imprimir(aux->palavra.lista_linha);
+        printf("Linhas: \n");
         printf("-----------------------\n");
         aux = aux->prox;
     }
@@ -87,16 +69,14 @@ void ImprimirLPespecifica(ListaPala *LP, char *pl){
     if(r == 1){
         printf("Palavra existe.\n");
         while (aux != NULL){
-        
         result = strcmp(aux->palavra.item, pl);
-        
         if(result == 0){
-            printf("%s\n",aux->palavra.item);
-            LL_Imprimir(aux->palavra.lista_linha);
+            printf("-----------------------\n");
+            printf("palavra: %s\n",aux->palavra.item);
+            printf("Linhas: \n");
+            printf("-----------------------\n");
         }
-        
         aux = aux->prox;
-        
         }
     }
     else{
@@ -112,14 +92,13 @@ int ProcurarLP(ListaPala *LP, char *pl){ //funcao 2
 
     while (aux != NULL){
         result = strcmp(aux->palavra.item, pl);
-        
         if(result == 0){
+            //printf("Palavra existe.\n");
             return 1;
         }
-        
         aux = aux->prox;
-   
     }
+    //printf("Palavra nao existe.\n");
     return 0;
 }
 
@@ -173,30 +152,35 @@ void ExcluirElemLPfinal(ListaPala *LP){ //funcao 4
         return; 
     }
 
-    while(aux->prox != NULL){
-        aux = aux->prox;
+    while (1){
+        if(aux->prox == NULL){
+            Cauxptr = LP->Ulitmo;
+            LP->Ulitmo = ANTptr;
+            LP->Ulitmo->prox = NULL;
+            free(Cauxptr);
+            printf("Ultima palavra removida.\n");
+            return;
+        }
         ANTptr = ANTptr->prox;
+        aux = aux->prox;
     }
-
-    Cauxptr = aux;
-    ANTptr->prox = aux->prox;
 }
 
 //retornar quantidade de palavras
-void TamanhoLP(ListaPala *LP){ //funcao 8
-    printf("%d",LP->nroElem);
+int TamanhoLP(ListaPala *LP){ //funcao 8
+    return LP->nroElem;
 }
 
 
 void InstrucoesLP(void){
-    printf("\nDigite sua escolha:\n"
-    "1 Inserir elementos na lista.\n"
-    "2 Procurar se elemento existe.\n"
-    "3 Excluir um elemento na lista.\n"
-    "4 Excluir um elemento no final da lista.\n"
-    "5 Exibir quantas palavras existem.\n"
-    "6 Imprimir a lista de palavras.\n"
-    "7 Imprimir palavra desejada e suas linhas.\n"
-    "8 Imprimir letra especifica.\n"
-    "9 Finalizar.\n");
+    printf("Digite sua escolha:\n"
+    "1 para inserir um elemento na lista.\n"
+    "2 para para procurar se elemento existe.\n"
+    "3 para excluir um elemento na lista.\n"
+    "4 para excluir um elemento no final da lista.\n"
+    "5 para exibir quantas palavras existem.\n"
+    "6 para imprimir a lista de palavras.\n"
+    "7 para imprimir palavra desejada e suas linhas.\n"
+    "8 para imprimir todas as palavras de uma determinada letra.\n"
+    "9 para terminar.\n");
 }

@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "TADpalavra.h"
-#include "TADdicionario.h"
-#include "TADlinha.h"
+#include "../Project/headers/TADdicionario.h"
+#include "../Project/headers/TADpalavra.h"
+#include "../Project/headers/TADlinha.h"
 
 int main(){
     lista_letra letras;

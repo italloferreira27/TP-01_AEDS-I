@@ -25,30 +25,19 @@ typedef struct{
 void inicia_lista_lista_letra(lista_letra *lista);
 
 //insere letra na lista
-void insere_letra(lista_letra *lista, letra l,char *Palavra);
+void insere_letra(lista_letra *lista, letra l,char *Palavra );
 
 //verifica se a letra ja exista(chamar para inserir palavra)
-int verifica_letra(lista_letra *lista, letra l, char *charptr);
+int verifica_letra(lista_letra *lista, letra l, char *charptr,int cont);
 
 // imprime lista
 void imprimeletra(lista_letra *lista);
 
 //imprime letra dada
-void imprimeletradada(lista_letra *lista, char l);
+void imprimeletradada(lista_letra *lista);
 
-//imprime palavra dada
-void ProcurarPalavra(lista_letra *letra, char *pl, char l);
+//trasporta informacao
+void trasport(lista_letra *lista,char *palavra,int escolha);
 
-//excluir elemento final de uma letra
-void ExcluirElemFinal(lista_letra *letra, char l); //funcao 4 
-
-//imprimir palavra especifica
-void PalavraEsp(lista_letra *letra, char *pl, char l); //funcao 7
-
-//excluir palavra dada
-void ExcluirElemEspecifico(lista_letra *letra, char *pl, char l); //funcao 3 
-
-//tamanho da lista de palavras
-void TamanhoLetra(lista_letra *letra, char l);
 
 #endif

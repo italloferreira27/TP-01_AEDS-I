@@ -23,10 +23,10 @@ typedef struct{
 
 int LL_Vazia(Tlista* lista);
 void LL_Inicializa(Tlista* lista);
-void LL_Inserir(Tlista* lista, Titem item);
+void LL_Inserir(Tlista* lista, Titem item,int cont);
 int LL_Imprimir(Tlista* lista);
-int LL_Procurar(Tlista* lista, int item);
+int LL_Procurar(Tlista* lista, Titem item);
 int LL_ExcluirFinal(Tlista* lista);
-int LL_ExcluirEspecifico(Tlista* lista, int item);
+int LL_ExcluirEspecifico(Tlista* lista, Titem item);
 
 #endif
