@@ -7,7 +7,6 @@
 
 int main(){
     lista_letra letras;
-    lista_letra *letr;
     letra let;
     ListaPala lista;
     TPalavra obj;
@@ -16,7 +15,7 @@ int main(){
     Titem item;
 
     int escolha, result;
-    int cont = 1;
+    int cont = 1, i;
     
     char linha_texto[100],pala[10];
     char *palavra;
@@ -54,6 +53,21 @@ int main(){
                         while(palavra){
                             let.letra = palavra[0];
                             //item.chave = cont;
+                            result = strlen(palavra);
+                            //palavraaux = *palavra;
+                            char palavraaux[result];
+                            if(palavra[result-1] == '\n'){
+                                for(i=0;i<result;i++){
+                                    if(i<result-1)
+                                        palavraaux[i] = palavra[i];
+                                }
+                                palavra = palavraaux;
+                                for(i=0;i<result-1;i++){
+                                    printf("%c",palavra[i]);
+                                }
+                                printf(" ");
+                                
+                            }
                             verifica_letra(&letras, let, palavra,cont);
                             palavra = strtok(NULL, " "); //Passa para a proxima palavra
                             
