@@ -29,7 +29,7 @@ int main(){
     TXTptr = fopen("texto.txt", "r");
 
 
-    inicia_lista_lista_letra(&letras);
+    inicia_lista_letra(&letras);
 
 
     while(escolha != 9){
@@ -65,56 +65,72 @@ int main(){
                 printf("Leitura realizada com sucesso.\n\n");
                 break;
             case 2:
-
-                printf("digite a palavra para verificar: ");
-                scanf("%s",pala);
-
-                trasport(&letras,pala,escolha);
-               
+                
+                    printf("digite a palavra para verificar: ");
+                    scanf("%s",pala);
+                if(letras.primeiro != letras.utimo){ 
+                    trasport(&letras,pala,escolha);
+                }else{
+                    printf("\nPalavra não existe\n");
+                }
                 break;
             
             case 3:
-
-                printf("Digite a palavra que queria excluir: ");
-                scanf("%s",pala);
-                trasport(&letras,pala,escolha); 
-
+                
+                if(letras.primeiro != letras.utimo){
+                    printf("Digite a palavra que queria excluir: ");
+                    scanf("%s",pala);
+                    trasport(&letras,pala,escolha); 
+                }else{
+                    printf("\nLista vazia\n");
+                }
                 break;
 
             case 4:
-
-                printf("Digite a letra no qual sera removido a ultima palavra: ");
-                scanf("%s",pala);
-                printf("Ultima palavra sera excluida.\n");
-                trasport(&letras,pala,escolha);
-
+                if(letras.primeiro != letras.utimo){
+                    printf("Digite a letra no qual sera removido a ultima palavra: ");
+                    scanf("%s",pala);
+                    printf("Ultima palavra sera excluida.\n");
+                    trasport(&letras,pala,escolha);
+                }else{
+                    printf("\nLista vazia\n");
+                }
                 break;
 
             case 5:
-
-                printf("Sera exibido a quantidade de palavras existentes na lista da letra: ");
-                scanf("%s",pala);
-                trasport(&letras,pala,escolha);
-
+                if(letras.primeiro != letras.utimo){
+                    printf("Sera exibido a quantidade de palavras existentes na lista da letra: ");
+                    scanf("%s",pala);
+                    trasport(&letras,pala,escolha);
+                }else{
+                    printf("\nLista vazia\n");
+                }
                 break; 
 
             case 6:
-                imprimeletra(&letras);
-
+                if(letras.primeiro != letras.utimo){
+                    imprimeletra(&letras);
+                }else{
+                    printf("\nLista vazia\n");
+                }
                 break;
 
             case 7:
-
-                printf("Digite uma palavra para saber em quais linhas ela aparece: ");
-                scanf("%s",pala);
-                trasport(&letras,pala,escolha);
-
+                if(letras.primeiro != letras.utimo){
+                    printf("Digite uma palavra para saber em quais linhas ela aparece: ");
+                    scanf("%s",pala);
+                    trasport(&letras,pala,escolha);
+                }else{
+                    printf("\nLista vazia\n");
+                }
                 break;
 
             case 8:
-
+                if(letras.primeiro != letras.utimo){
                 imprimeletradada(&letras);
-
+                 }else{
+                    printf("\nLista vazia\n");
+                }
                 break;
 
             case 9:

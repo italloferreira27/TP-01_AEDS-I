@@ -5,7 +5,7 @@
 #include "../headers/TADpalavra.h"
 
 //inicializa lista de letras
-void inicia_lista_lista_letra(lista_letra *lista){
+void inicia_lista_letra(lista_letra *lista){
     lista->primeiro = (celula_letra *)malloc(sizeof(celula_letra));
     lista->utimo = lista->primeiro;
     lista->utimo->prox = NULL;
