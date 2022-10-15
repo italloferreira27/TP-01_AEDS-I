@@ -88,7 +88,8 @@ void imprimeletradada(lista_letra *lista){
             break;
         }
         aux = aux->prox;
-    }ImprimirLP(aux->Letra.Pala);
+    }if(aux!=NULL)ImprimirLP(aux->Letra.Pala);
+    else printf("\nLetra não existe\n");
 
 }
 
@@ -96,39 +97,43 @@ void imprimeletradada(lista_letra *lista){
 void trasport(lista_letra *lista,char *palavra,int escolha){
     celula_letra *aux = lista->primeiro->prox;
 
-    while(aux->Letra.letra != palavra[0]){
+    while(aux->Letra.letra != palavra[0] && aux->prox != NULL){
         aux = aux->prox;
     }
+    
+    if(aux->prox != NULL){
+        switch(escolha){
+            case 2:
 
-    switch(escolha){
-        case 2:
+                int i;
+                i = ProcurarLP(aux->Letra.Pala,palavra);
+                if(i==1)printf("\nPalavra Encontrada!\n\n");
+                else printf("\nInfelimente a palavra nao existe!\n\n");
+                break;
 
-            int i;
-            i = ProcurarLP(aux->Letra.Pala,palavra);
-            if(i==1)printf("\nPalavra Encontrada!\n\n");
-            else printf("\nInfelimente a palavra nao existe!\n\n");
-            break;
+            case 3:
 
-        case 3:
+                ExcluirElemLPEspecifico(aux->Letra.Pala,palavra);
+                break;
 
-            ExcluirElemLPEspecifico(aux->Letra.Pala,palavra);
-            break;
+            case 4:
 
-        case 4:
+                ExcluirElemLPfinal(aux->Letra.Pala);
+                break;
 
-            ExcluirElemLPfinal(aux->Letra.Pala);
-            break;
+            case 5:
+                if(aux!=NULL){
+                TamanhoLP(aux->Letra.Pala);}
+                break;
 
-        case 5:
+            case 7:
 
-            TamanhoLP(aux->Letra.Pala);
-            break;
+                ImprimirLPespecifica(aux->Letra.Pala,palavra);
+                break;
 
-        case 7:
-
-            ImprimirLPespecifica(aux->Letra.Pala,palavra);
-            break;
-
+        }
+    }else{
+        printf("\nItem nao encontrado.\n");
     }
 
 }

@@ -52,9 +52,9 @@ int main(){
 
                         while(palavra){
                             let.letra = palavra[0];
-                            //item.chave = cont;
+                            
+                            //tratar palavras no final da linha
                             result = strlen(palavra);
-                            //palavraaux = *palavra;
                             char palavraaux[result];
                             if(palavra[result-1] == '\n'){
                                 for(i=0;i<result;i++){
@@ -65,12 +65,9 @@ int main(){
                                     }
                                 }
                                 palavra = palavraaux;
-                                for(i=0;i<result-1;i++){
-                                    printf("%c ",palavra[i]);
-                                }
-                                printf(" ");
-                                
                             }
+                            //
+
                             verifica_letra(&letras, let, palavra,cont);
                             palavra = strtok(NULL, " "); //Passa para a proxima palavra
                             
@@ -82,13 +79,12 @@ int main(){
                 printf("Leitura realizada com sucesso.\n\n");
                 break;
             case 2:
-                
-                    printf("digite a palavra para verificar: ");
+                    printf("Digite a palavra para verificar: ");
                     scanf("%s",pala);
                 if(letras.primeiro != letras.utimo){ 
                     trasport(&letras,pala,escolha);
                 }else{
-                    printf("\nPalavra não existe\n");
+                    printf("\nPalavra não existe.\n");
                 }
                 break;
             
@@ -99,7 +95,7 @@ int main(){
                     scanf("%s",pala);
                     trasport(&letras,pala,escolha); 
                 }else{
-                    printf("\nLista vazia\n");
+                    printf("\nLista vazia.\n");
                 }
                 break;
 
@@ -110,7 +106,7 @@ int main(){
                     printf("Ultima palavra sera excluida.\n");
                     trasport(&letras,pala,escolha);
                 }else{
-                    printf("\nLista vazia\n");
+                    printf("\nLista vazia.\n");
                 }
                 break;
 
@@ -120,7 +116,7 @@ int main(){
                     scanf("%s",pala);
                     trasport(&letras,pala,escolha);
                 }else{
-                    printf("\nLista vazia\n");
+                    printf("\nLista vazia.\n");
                 }
                 break; 
 
@@ -128,7 +124,7 @@ int main(){
                 if(letras.primeiro != letras.utimo){
                     imprimeletra(&letras);
                 }else{
-                    printf("\nLista vazia\n");
+                    printf("\nLista vazia.\n");
                 }
                 break;
 
@@ -138,7 +134,7 @@ int main(){
                     scanf("%s",pala);
                     trasport(&letras,pala,escolha);
                 }else{
-                    printf("\nLista vazia\n");
+                    printf("\nLista vazia.\n");
                 }
                 break;
 
@@ -146,13 +142,13 @@ int main(){
                 if(letras.primeiro != letras.utimo){
                 imprimeletradada(&letras);
                  }else{
-                    printf("\nLista vazia\n");
+                    printf("\nLista vazia.\n");
                 }
                 break;
 
             case 9:
 
-                printf("finalizando ...\n");
+                printf("Finalizando ...\n");
 
                 break;
 
