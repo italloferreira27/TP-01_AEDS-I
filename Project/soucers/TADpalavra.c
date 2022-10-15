@@ -193,7 +193,7 @@ void TamanhoLP(ListaPala *LP){ //funcao 8
 
 
 void InstrucoesLP(void){
-    printf("\nDigite sua escolha:\n"
+    printf("\nMENU:\n"
     "1 = Ler o arquivo de texto;\n"
     "2 = Procurar se a palavra existe;\n"
     "3 = Excluir um elemento especifico da lista;\n"
