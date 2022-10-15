@@ -21,12 +21,25 @@ typedef struct{
     Apontado Ultimo;
 }Tlista;
 
+//veifica se a lista esta vazia
 int LL_Vazia(Tlista* lista);
+
+//inicia lista de linhas
 void LL_Inicializa(Tlista* lista);
+
+//insere na lista 
 void LL_Inserir(Tlista* lista, Titem item,int cont);
+
+//imprime lista 
 int LL_Imprimir(Tlista* lista);
+
+//verifica se liinha ja foi adicionada
 int LL_Procurar(Tlista* lista, Titem item);
+
+//exclui do final da lista
 int LL_ExcluirFinal(Tlista* lista);
+
+//exclui linha especifica
 int LL_ExcluirEspecifico(Tlista* lista, Titem item);
 
 #endif

@@ -1,16 +1,18 @@
 #include "../headers/TADlinha.h"
 
-
+//verifica se a lista esta vazia
 int LL_Vazia(Tlista* lista){
     return lista->Primeiro == lista->Ultimo;
 }
 
+//inicia lista de letras
 void LL_Inicializa(Tlista* lista){
     lista->Primeiro = (Apontado) malloc(sizeof(Celula_Linha));
     lista->Ultimo = lista->Primeiro;
     lista->Primeiro->prox = NULL;
 }
 
+//insere linha
 void LL_Inserir(Tlista* lista, Titem item,int cont){
 
     item.chave = cont;
@@ -26,6 +28,7 @@ void LL_Inserir(Tlista* lista, Titem item,int cont){
 
 }
 
+//imprime lista de linhas
 int LL_Imprimir(Tlista* lista){
     Apontado aux;
 
@@ -43,6 +46,7 @@ int LL_Imprimir(Tlista* lista){
     printf("|\n");
 }
 
+//verifica se a linha ja foi adicionada
 int LL_Procurar(Tlista* lista, Titem item){
     Apontado aux;
     aux = lista->Primeiro;
@@ -56,6 +60,7 @@ int LL_Procurar(Tlista* lista, Titem item){
     return 0;
 }
 
+//esclui do final da lista
 int LL_ExcluirFinal(Tlista* lista){
     if(LL_Vazia(lista)){
         
@@ -79,6 +84,7 @@ int LL_ExcluirFinal(Tlista* lista){
     }
 }
 
+//exclui linhas especificas
 int LL_ExcluirEspecifico(Tlista* lista, Titem item){
     Apontado aux = lista->Primeiro->prox;
     Apontado ant = lista->Primeiro;
