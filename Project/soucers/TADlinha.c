@@ -20,9 +20,9 @@ void LL_Inserir(Tlista* lista, Titem item,int cont){
         lista->Ultimo = lista->Ultimo->prox;
         lista->Ultimo->linha = item;
         lista->Ultimo->prox = NULL;
-        //printf("Inserido com sucesso!\n");
+        
     }
-    //printf("%d",lista->Ultimo->linha.chave);
+    
 
 }
 
@@ -30,7 +30,6 @@ int LL_Imprimir(Tlista* lista){
     Apontado aux;
 
     if(LL_Vazia(lista)){
-        //printf("Lista vazia!\n");
         return 0;
     }
 
@@ -49,8 +48,7 @@ int LL_Procurar(Tlista* lista, Titem item){
     aux = lista->Primeiro;
 
     while(aux != NULL){
-        if(aux->linha.chave == item.chave){
-            //printf("Existe linha!\n");
+        if(aux->linha.chave == item.chave){   
             return 1;
         }
         aux = aux->prox;
@@ -60,7 +58,7 @@ int LL_Procurar(Tlista* lista, Titem item){
 
 int LL_ExcluirFinal(Tlista* lista){
     if(LL_Vazia(lista)){
-        //printf("lista vazia!\n");
+        
         return 0;
     }
 
