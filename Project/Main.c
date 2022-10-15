@@ -58,12 +58,15 @@ int main(){
                             char palavraaux[result];
                             if(palavra[result-1] == '\n'){
                                 for(i=0;i<result;i++){
-                                    if(i<result-1)
+                                    if(i<result-1){
                                         palavraaux[i] = palavra[i];
+                                    }else{
+                                        palavraaux[i] = '\0';
+                                    }
                                 }
                                 palavra = palavraaux;
                                 for(i=0;i<result-1;i++){
-                                    printf("%c",palavra[i]);
+                                    printf("%c ",palavra[i]);
                                 }
                                 printf(" ");
                                 
