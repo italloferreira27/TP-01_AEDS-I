@@ -105,8 +105,8 @@ void trasport(lista_letra *lista,char *palavra,int escolha){
 
             int i;
             i = ProcurarLP(aux->Letra.Pala,palavra);
-            if(i==1)printf("\npalavra existe.\n\n");
-            else printf("\npalavra nao existe.\n\n");
+            if(i==1)printf("\nPalavra Encontrada!\n\n");
+            else printf("\nInfelimente a palavra nao existe!\n\n");
             break;
 
         case 3:

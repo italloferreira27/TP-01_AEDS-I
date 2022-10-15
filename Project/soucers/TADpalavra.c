@@ -194,13 +194,13 @@ void TamanhoLP(ListaPala *LP){ //funcao 8
 
 void InstrucoesLP(void){
     printf("\nDigite sua escolha:\n"
-    "1 Inserir elementos na lista.\n"
-    "2 Procurar se elemento existe.\n"
-    "3 Excluir um elemento na lista.\n"
-    "4 Excluir um elemento no final da lista.\n"
-    "5 Exibir quantas palavras existem.\n"
-    "6 Imprimir a lista de palavras.\n"
-    "7 Imprimir palavra desejada e suas linhas.\n"
-    "8 Imprimir letra especifica.\n"
-    "9 Finalizar.\n");
+    "1 = Ler o arquivo de texto;\n"
+    "2 = Procurar se a palavra existe;\n"
+    "3 = Excluir um elemento especifico da lista;\n"
+    "4 = Excluir um elemento no final da lista;\n"
+    "5 = Exibir quantas palavras existem;\n"
+    "6 = Imprimir a lista de palavras;\n"
+    "7 = Imprimir palavra desejada e suas linhas;\n"
+    "8 = Imprimir letra especifica;\n"
+    "9 = Finalizar.\n");
 }

@@ -66,7 +66,7 @@ int main(){
                 break;
             case 2:
 
-                printf("digite a palavra para verificar :");
+                printf("digite a palavra para verificar: ");
                 scanf("%s",pala);
 
                 trasport(&letras,pala,escolha);
