@@ -97,6 +97,7 @@ void imprimeletradada(lista_letra *lista){
 void trasport(lista_letra *lista,char *palavra,int escolha){
     int cont = 0;
     celula_letra *aux = lista->primeiro->prox;
+    int i;
 
     while(aux->Letra.letra != palavra[0] && aux->prox != NULL){
         aux = aux->prox;
@@ -109,8 +110,6 @@ void trasport(lista_letra *lista,char *palavra,int escolha){
     if(aux->prox != NULL || cont != 0){
         switch(escolha){
             case 2:
-
-                int i;
                 i = ProcurarLP(aux->Letra.Pala,palavra);
                 if(i==1)printf("\nPalavra Encontrada!\n\n");
                 else printf("\nInfelimente a palavra nao existe!\n\n");
