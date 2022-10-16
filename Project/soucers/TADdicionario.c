@@ -89,19 +89,24 @@ void imprimeletradada(lista_letra *lista){
         }
         aux = aux->prox;
     }if(aux!=NULL)ImprimirLP(aux->Letra.Pala);
-    else printf("\nLetra não existe\n");
+    else printf("\nInfelizmente a letra nao existe na lista.\n");
 
 }
 
 //trasporta informacao(Do mein para pra o tad lista de palavras/palvra)
 void trasport(lista_letra *lista,char *palavra,int escolha){
+    int cont = 0;
     celula_letra *aux = lista->primeiro->prox;
 
     while(aux->Letra.letra != palavra[0] && aux->prox != NULL){
         aux = aux->prox;
     }
+
+    if(aux->Letra.letra == palavra[0]){
+            cont++;
+        } 
     
-    if(aux->prox != NULL){
+    if(aux->prox != NULL || cont != 0){
         switch(escolha){
             case 2:
 

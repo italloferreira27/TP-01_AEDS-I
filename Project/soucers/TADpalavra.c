@@ -183,6 +183,7 @@ void ExcluirElemLPfinal(ListaPala *LP){ //funcao 4
     Cauxptr = aux;
     ANTptr->prox = aux->prox;
     free(Cauxptr);
+    printf("\nPalavra removida.\n");
     LP->nroElem--;
 }
 
